@@ -76,148 +76,43 @@
                 </div>
                 <div class="mr-[36px]">
                     <nav>
-                        <a href="#"
+                        <a href="./register.html"
                             class="text-[15px] font-medium bg-[#FFAFAF] px-[28px] pt-[10px] pb-[7px] rounded-[25px] hover:opacity-[0.8] duration-200">Регистрация</a>
-
                     </nav>
                 </div>
             </header>
             <main class="w-full flex flex-col">
                 <div class="w-full max-h-[800px] bg-white mt-[25px] rounded-[25px] flex h-[85vh] lg:h-[82vh]">
-                    <div class="flex max-w-[300px] w-full flex-col items-center">
-                        <h1 class="text-[20px] font-medium mt-[15px]">Диалоги</h1>
-                        <div class="h-[50px] w-[250px] rounded-[10px] bg-[#F9F9F5] mt-[15px] flex items-center cursor-pointer hover:bg-[#FFAFAF] duration-300 "
-                            id="active">
-                            <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[5px]">
-                                <img src="./media/1663110850_6-mykaleidoscope-ru-p-spokoinii-chelovek-vkontakte-8.jpg"
-                                    alt="Photo" class="w-full h-full rounded-[50px] object-cover">
-                            </div>
-                            <div class="flex flex-col ml-[15px]">
-                                <div class="flex">
-                                    <span>Николай</span>
-                                    <span class="ml-[5px]">Кудрявцев</span>
-                                </div>
-                                <div class="flex">
-                                    <span>Вы:</span>
-                                    <span class="ml-[5px] text-gray-500">Знаешь наверное ...</span>
-                                </div>
+                    <div class="flex max-w-[300px] w-full flex-col items-center dialoglist">
+                        <div class="flex items-center">
+                            <h1 class="text-[20px] font-medium mt-[15px]">Диалоги</h1>
+                            <div
+                                class="w-[100px] h-[20px] bg-green-300 rounded-[5px] mt-[15px] ml-[15px] flex items-center justify-center cursor-pointer">
+                                <span class="text-white text-[15px] font-bold mt-[2px]">найти друга</span>
                             </div>
                         </div>
-                        <div
-                            class="h-[50px] w-[250px] rounded-[10px] bg-[#F9F9F5] mt-[15px] flex items-center cursor-pointer hover:bg-[#FFAFAF] duration-300">
-                            <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[5px]">
-                                <img src="./media/e77beef67c4add701e512096f1849a15.jpg" alt="Photo"
-                                    class="w-full h-full rounded-[50px] object-cover">
+                        <div class="flex mt-[15px] items-center">
+                            <div class="w-[150px] h-[25px] border-[1px] border-green-300 rounded-[5px]">
+                                <form action="#" id="search-form">
+                                    <input type="text" name="loginsearch" id="loginsearch" class="w-full h-full inputLogin"
+                                        placeholder="Введите логин" list="login_all">
+                                    <datalist id="login_all">
+
+                                    </datalist>
                             </div>
-                            <div class="flex flex-col ml-[15px]">
-                                <div class="flex">
-                                    <span>Кирилл</span>
-                                    <span class="ml-[5px]">Широков</span>
-                                </div>
-                                <div class="flex">
-                                    <span>я:</span>
-                                    <span class="ml-[5px] text-gray-500">хз</span>
-                                </div>
-                            </div>
+                            <button
+                                class="btn-add w-[20px] h-[20px] bg-green-300 text-white flex justify-center items-center pt-[2px] rounded-[5px] ml-[10px] mb-[2px] cursor-pointer">+</button>
+                            </form>
                         </div>
                     </div>
                     <div class="h-full w-[1px] bg-gray-200"></div>
-                    <div class="flex flex-col w-full max-w-[850px]">
-                        <div class="flex h-[70px] w-full items-center ml-[25px] justify-between">
-                            <div class="flex">
-                                <div class="flex">
-                                    <span>Николай</span>
-                                    <span class="ml-[5px]">Кудрявцев</span>
-                                </div>
-                                <div class="all-circle flex items-center">
-                                    <div class="w-[10px] h-[10px] bg-green-500 rounded-[500px] ml-[10px]"></div>
-                                    <span class="ml-[5px] text-[13px] text-gray-400">online</span>
-                                </div>
-                            </div>
-                            <div class="flex gap-[5px] mr-[50px] cursor-pointer">
-                                <div class="w-[5px] h-[5px] rounded-[500px] bg-gray-500"></div>
-                                <div class="w-[5px] h-[5px] rounded-[500px] bg-gray-500"></div>
-                                <div class="w-[5px] h-[5px] rounded-[500px] bg-gray-500"></div>
-                            </div>
-                        </div>
-                        <div class="h-[1px] w-full bg-gray-200"></div>
-                        <div class="w-full h-full overflow-y-auto">
-                            <div class="you">
-                                <div class="flex items-start mt-[50px] w-full">
-                                    <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[15px]">
-                                        <img src="./media/1663110850_6-mykaleidoscope-ru-p-spokoinii-chelovek-vkontakte-8.jpg"
-                                            alt="Photo" class="w-full h-full rounded-[50px] object-cover">
-                                    </div>
-                                    <div class="bg-gray-100 rounded-[10px] max-w-[250px] flex items-center ml-[5px]">
-                                        <span class="px-[10px] text-[15px] py-[5px]">Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Saepe nisi ad neque ex nesciunt? Numquam
-                                            quam beatae iusto voluptatem. Accusamus vitae reprehenderit totam quam
-                                            fuga, architecto minima magni odio sunt.</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="me w-full">
-                                <div class="flex items-start mt-[25px] w-full justify-end">
-                                    <div class="bg-gray-100 rounded-[10px] max-w-[250px] flex items-center mr-[5px]">
-                                        <span class="px-[10px] text-[15px] py-[5px]">Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Saepe nisi ad neque ex nesciunt? Numquam
-                                            quam beatae iusto voluptatem. Accusamus vitae reprehenderit totam quam
-                                            fuga, architecto minima magni odio sunt.</span>
-                                    </div>
-                                    <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] mr-[15px]">
-                                        <img src="./media/e77beef67c4add701e512096f1849a15.jpg" alt="Photo"
-                                            class="w-full h-full rounded-[50px] object-cover">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="you">
-                                <div class="flex items-start mt-[50px] w-full">
-                                    <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[15px]">
-                                        <img src="./media/1663110850_6-mykaleidoscope-ru-p-spokoinii-chelovek-vkontakte-8.jpg"
-                                            alt="Photo" class="w-full h-full rounded-[50px] object-cover">
-                                    </div>
-                                    <div class="bg-gray-100 rounded-[10px] max-w-[250px] flex items-center ml-[5px]">
-                                        <span class="px-[10px] text-[15px] py-[5px]">Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Saepe nisi ad neque ex nesciunt? Numquam
-                                            quam beatae iusto voluptatem. Accusamus vitae reprehenderit totam quam
-                                            fuga, architecto minima magni odio sunt.</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="me w-full">
-                                <div class="flex items-start mt-[25px] w-full justify-end">
-                                    <div class="bg-gray-100 rounded-[10px] max-w-[250px] flex items-center mr-[5px]">
-                                        <span class="px-[10px] text-[15px] py-[5px]">Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Saepe nisi ad neque ex nesciunt? Numquam
-                                            quam beatae iusto voluptatem. Accusamus vitae reprehenderit totam quam
-                                            fuga, architecto minima magni odio sunt.</span>
-                                    </div>
-                                    <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] mr-[15px]">
-                                        <img src="./media/e77beef67c4add701e512096f1849a15.jpg" alt="Photo"
-                                            class="w-full h-full rounded-[50px] object-cover">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex h-[80px] justify-center items-center">
-                            <div class="w-[20px] cursor-pointer mr-[15px]">
-                                <img src="./media/png-transparent-computer-icons-camera-camera-cdr-text-camera-lens (1).png"
-                                    alt="Send">
-                            </div>
-                            <div class="h-[50px] w-[75vh] rounded-[12px] bg-[#F9F9F5]">
-                                <input type="text" placeholder="Сообщение"
-                                    class="text-black text-start w-full h-full bg-[#F9F9F5] pl-[15px] rounded-[12px]">
-                            </div>
-                            <div class="w-[25px] cursor-pointer ml-[25px]">
-                                <img src="./media/png-transparent-computer-icons-desktop-symbol-paper-plane-miscellaneous-angle-triangle (1).png"
-                                    alt="Send">
-                            </div>
-                        </div>
+                    <div class="flex flex-col w-full max-w-[850px] messagelist">
                     </div>
                 </div>
             </main>
         </div>
     </div>
+    <script src="./js/message.js"></script>
 </body>
 
 </html>
