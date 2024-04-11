@@ -3,9 +3,9 @@ let messagelist = document.querySelector('.messagelist');
 let listLogin = document.getElementById('login_all')
 let inputElement = document.querySelector('.inputLogin')
 let form = document.getElementById('search-form');
-
+let token = localStorage.getItem('auth_token')
+const newStr = token.replace(/"/g, '');
 if (localStorage.getItem('auth_token') != '') {
-
     //лайфпоиск юзеров по логину
     async function inputSearch(code) {
         let contentLogin = await fetch(`http://localhost:3000/search?query=${code}`, {
@@ -48,26 +48,42 @@ if (localStorage.getItem('auth_token') != '') {
         debouncedInputSearch(inputValue);
     });
 
+    async function usersdialog() {
+        createDialogLink(items)
+    }
 
     async function viewDialog() {
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
-            
+
             let formData = new FormData(form);
 
             let username = formData.get('loginsearch');
 
-            if(username == ''){
+            if (username == '') {
                 alert('Не указан логин')
                 return
             }
 
             let items = await addUser(username)
 
-            console.log(items)
-            if(items == ''){
+            if (items == '') {
                 alert('Не правильно указан логин')
             }
+
+            let responsetoken = await fetch(`http://localhost:3000/userstoken/${newStr}`)
+            let contenttoken = await responsetoken.json();
+
+            let user1_id = contenttoken[0].user_id;
+            let user2_id = items[0].user_id;
+
+            fetch('http://localhost:3000/dialog', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user1_id, user2_id }),
+            })
+            window.open('./index.html')
+
         })
 
     }
@@ -215,3 +231,153 @@ async function addUser(login) {
     let contentLogin = await responseLogin.json();
     return contentLogin
 }
+
+
+function createDialog(user) {
+
+
+    let div = document.createElement('div');
+    user.forEach(e => {
+        div.innerHTML = `
+    <div
+    class="h-[50px] w-[250px] rounded-[10px] bg-[#F9F9F5] mt-[15px] flex items-center cursor-pointer hover:bg-[#FFAFAF] duration-300" id="${e.user_id}" class="${e.user_id}" >
+    <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[5px]">
+    <img src="./media/k7WP8eqCnjHQEBXsrWQqajsa30fmpa9FvqLcZRkYfGkReNwTfnHPNPjlUXk9yL0sUkU9ijRAOd0jm5hzO38WghGy.jpg" alt="user"
+            class="w-full h-full rounded-[50px] object-cover">
+    </div>
+    <div class="flex flex-col ml-[15px]">
+        <div class="flex">
+            <span>${e.first_name}</span>
+            <span class="ml-[5px]">${e.last_name}</span>
+        </div>
+        <div class="flex">
+            <span>я:</span>
+            <span class="ml-[5px] text-gray-500"></span>
+        </div>
+    </div>
+</div>
+    `
+    })
+    dialoglist.appendChild(div)
+}
+
+async function createDialogLink(user) {
+
+    let responsetoken = await fetch(`http://localhost:3000/userstoken/${newStr}`)
+    let contenttoken = await responsetoken.json();
+
+    let user1_id = contenttoken[0].user_id;
+    let user2_id = user[0].user_id;
+
+    let contentDialog = await fetch(`http://localhost:3000/dialog/user/${user1_id}`, {
+        method: 'GET'
+    })
+
+    let responseDialog = await contentDialog.json();
+
+    for (let i = 0; i < responseDialog.length; i++) {
+
+        let contentDialogUsers = await fetch(`http://localhost:3000/users/dialog/${responseDialog[i].user2_id}`, {
+            method: 'GET'
+        })
+
+        let responseDialogusers = await contentDialogUsers.json();
+
+        console.log(responseDialogusers)
+
+        responseDialogusers.map(e => {
+            let div = document.createElement('div');
+            div.innerHTML = `
+            <div
+            class="h-[50px] w-[250px] rounded-[10px] bg-[#F9F9F5] mt-[15px] flex items-center cursor-pointer hover:bg-[#FFAFAF] duration-300" id="${e.user_id}">
+            <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[5px]">
+            <img src="./media/k7WP8eqCnjHQEBXsrWQqajsa30fmpa9FvqLcZRkYfGkReNwTfnHPNPjlUXk9yL0sUkU9ijRAOd0jm5hzO38WghGy.jpg" alt="user"
+                    class="w-full h-full rounded-[50px] object-cover">
+            </div>
+            <div class="flex flex-col ml-[15px]">
+                <div class="flex">
+                    <span>${e.first_name}</span>
+                    <span class="ml-[5px]">${e.last_name}</span>
+                </div>
+                <div class="flex">
+                    <span>я:</span>
+                    <span class="ml-[5px] text-gray-500"></span>
+                </div>
+            </div>
+        </div>
+            `
+            dialoglist.appendChild(div)
+        })
+
+    }
+
+}
+async function test() {
+
+    let responsetoken = await fetch(`http://localhost:3000/userstoken/${newStr}`)
+    let contenttoken = await responsetoken.json();
+
+    let user1_id = contenttoken[0].user_id;
+
+    let contentDialog = await fetch(`http://localhost:3000/dialog/user/${user1_id}`, {
+        method: 'GET'
+    })
+
+    let responseDialog = await contentDialog.json();
+
+
+    for (let i = 0; i < responseDialog.length; i++) {
+        let contentDialogUsers = await fetch(`http://localhost:3000/users/dialog/${responseDialog[i].user2_id}`, {
+            method: 'GET'
+        })
+        let responseDialogusers = await contentDialogUsers.json();
+        responseDialogusers.map(e => {
+            let div = document.createElement('div');
+            div.innerHTML = `
+            <div
+            class="h-[50px] w-[250px] rounded-[10px] bg-[#F9F9F5] mt-[15px] flex items-center cursor-pointer hover:bg-[#FFAFAF] duration-300" id="${e.user_id}">
+            <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[5px]">
+            <img src="./media/k7WP8eqCnjHQEBXsrWQqajsa30fmpa9FvqLcZRkYfGkReNwTfnHPNPjlUXk9yL0sUkU9ijRAOd0jm5hzO38WghGy.jpg" alt="user"
+                    class="w-full h-full rounded-[50px] object-cover">
+            </div>
+            <div class="flex flex-col ml-[15px]">
+                <div class="flex">
+                    <span>${e.first_name}</span>
+                    <span class="ml-[5px]">${e.last_name}</span>
+                </div>
+                <div class="flex">
+                    <span>я:</span>
+                    <span class="ml-[5px] text-gray-500"></span>
+                </div>
+            </div>
+        </div>
+            `
+            dialoglist.appendChild(div)
+        })
+    }
+}
+test()
+
+async function messageUser() {
+    let responsetoken = await fetch(`http://localhost:3000/userstoken/${newStr}`)
+    let contenttoken = await responsetoken.json();
+
+    let user1_id = contenttoken[0].user_id;
+
+    let contentDialog = await fetch(`http://localhost:3000/dialog/user/${user1_id}`, {
+        method: 'GET'
+    })
+    let responseDialog = await contentDialog.json();
+
+    console.log(responseDialog)
+
+    let contentmessage = await fetch(`http://localhost:3000/users/message/27`, {
+        method: 'GET'
+    })
+    let responsemessage = await contentmessage.json();
+
+    console.log(responsemessage)
+
+}
+
+messageUser()

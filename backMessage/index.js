@@ -112,7 +112,7 @@ app.get('/search', async (req, res) => {
     }
 });
 
-app.post('/register', async (req, res) => {
+app.post('/test/not', async (req, res) => {
 
 
     const { user_id, message , checkMessage} = req.body;
@@ -131,3 +131,88 @@ app.post('/register', async (req, res) => {
     res.json({ data, error });
 });
 
+
+app.post('/dialog', async (req, res) => {
+
+
+    const { user1_id, user2_id} = req.body;
+
+
+    const { data, error } = await supabaseClient
+        .from('dialogs')
+        .insert([{ user1_id , user2_id }]);
+
+    if (error) {
+        res.status(500).json({ error: error.message });
+    }
+
+    res.json({ data, error });
+});
+
+
+
+app.get('/userstoken/:token', async (req, res) => {
+    const token = req.params.token;
+    try {
+        const { data, error } = await supabaseClient.from('users').select('*').eq('token', token);
+        if (error) {
+            throw error;
+        }
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/dialog/user/:user1_id', async (req, res) => {
+    const user1_id = req.params.user1_id;
+    try {
+        const { data, error } = await supabaseClient.from('dialogs').select('*').eq('user1_id', user1_id);
+        if (error) {
+            throw error;
+        }
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+app.get('/users/dialog/:user_id', async (req, res) => {
+    const user_id = req.params.user_id;
+    try {
+        const { data, error } = await supabaseClient.from('users').select('*').eq('user_id', user_id);
+        if (error) {
+            throw error;
+        }
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.post('/message', async (req, res) => {
+    var date = new Date();
+    const { dialog_id , sender_id , message_text} = req.body;
+    const { data, error } = await supabaseClient
+        .from('messages')
+        .insert([{ dialog_id , sender_id , message_text , timestamp: date }]);
+    if (error) {
+        res.status(500).json({ error: error.message });
+    }
+    res.json({ data, error });
+})
+
+
+app.get('/users/message/:dialog_id', async (req, res) => {
+    const dialog_id = req.params.dialog_id;
+    try {
+        const { data, error } = await supabaseClient.from('messages').select('*').eq('dialog_id', dialog_id);
+        if (error) {
+            throw error;
+        }
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});

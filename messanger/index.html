@@ -53,48 +53,47 @@
                 </div>
                 <div class="mr-[36px]">
                     <nav>
-                        <a href="#"
+                        <a href="./register.html"
                             class="text-[15px] font-medium bg-[#FFAFAF] px-[28px] pt-[10px] pb-[7px] rounded-[25px] hover:opacity-[0.8] duration-200">Регистрация</a>
 
                     </nav>
                 </div>
             </header>
             <main class="w-full flex flex-col">
-                <div class="w-full h-[800px] bg-white mt-[25px] rounded-[25px] flex">
-                    <div class="flex max-w-[300px] w-full flex-col items-center">
-                        <h1 class="text-[20px] font-medium mt-[15px]">Диалоги</h1>
-                        <div
-                            class="h-[50px] w-[250px] rounded-[10px] bg-[#F9F9F5] mt-[15px] flex items-center cursor-pointer hover:bg-[#FFAFAF] duration-300">
-                            <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[5px]">
-                                <img src="./media/1663110850_6-mykaleidoscope-ru-p-spokoinii-chelovek-vkontakte-8.jpg"
-                                    alt="Photo" class="w-full h-full rounded-[50px] object-cover">
-                            </div>
-                            <div class="flex flex-col ml-[15px]">
-                                <div class="flex">
-                                    <span>Николай</span>
-                                    <span class="ml-[5px]">Кудрявцев</span>
-                                </div>
-                                <div class="flex">
-                                    <span>Вы:</span>
-                                    <span class="ml-[5px] text-gray-500">Знаешь наверное ...</span>
-                                </div>
+                <div class="w-full max-h-[800px] h-[82vh] bg-white mt-[25px] rounded-[25px] flex">
+                    <div class="flex max-w-[300px] w-full flex-col items-center dialoglist">
+                        <div class="flex items-center mt-[15px] gap-[10px]">
+                            <h1 class="text-[20px] font-medium">Диалоги</h1>
+                            <div
+                                class="w-[100px] h-[20px] bg-green-300 rounded-[5px] flex justify-center items-center cursor-pointer">
+                                <span class="font-bold text-white text-[15px]">Найти друга</span>
                             </div>
                         </div>
+                        <form action="#" id="search-form" class="flex max-h-[30px] mt-[15px]">
+                            <div class="flex gap-[7px]">
+                                <div class="w-[140px] h-[30px] border-[1px] border-green-300 rounded-[5px]">
+                                    <input type="text" name="loginsearch" id="loginsearch"
+                                        class="inputLogin max-w-[138px] rounded-[5px] h-full"
+                                        placeholder="Введите логин" class="w-full h-full rounded-[5px]"
+                                        list="login_all">
+                                    <datalist id="login_all">
+
+                                    </datalist>
+                                </div>
+                                <button
+                                    class="w-[30px] h-[30px] flex justify-center items-center bg-green-300 text-white pt-[4px] rounded-[5px] text-[20px]">+</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="h-full w-[1px] bg-[#F9F9F5]"></div>
-                    <div class="flex flex-col w-full">
-                        <div class="flex h-[70px] w-full items-center ml-[25px]">
-                            <div class="flex">
-                                <span>Николай</span>
-                                <span class="ml-[5px]">Кудрявцев</span>
-                            </div>
-                        </div>
-                        <div class="h-[1px] w-full bg-[#F9F9F5]"></div>
+                    <div class="flex flex-col w-full messagelist">
+
                     </div>
                 </div>
             </main>
         </div>
     </div>
+    <script src="./js/message.js"></script>
 </body>
 
 </html>
