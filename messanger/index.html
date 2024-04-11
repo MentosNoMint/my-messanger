@@ -13,27 +13,10 @@
     <script>
         tailwind.config = {
             theme: {
-                screens: {
-                    '2xl': { 'max': '1535px' },
-                    // => @media (max-width: 1535px) { ... }
-
-                    'xl': { 'max': '1279px' },
-                    // => @media (max-width: 1279px) { ... }
-
-                    'lg': { 'max': '1023px' },
-                    // => @media (max-width: 1023px) { ... }
-
-                    'md': { 'max': '767px' },
-                    // => @media (max-width: 767px) { ... }
-
-                    'sm': { 'max': '639px' },
-                    // => @media (max-width: 639px) { ... }
-                },
                 extend: {
                     colors: {
                         clifford: '#da373d',
                     }
-
                 }
             }
         }
@@ -43,22 +26,16 @@
         }
         @layer components{
              .wrapper{
-                @apply min-h-full w-full flex flex-col items-center;
+                @apply min-h-full w-full flex flex-col items-center
                      }
-             #active{
-                background-color: #FFAFAF
-             }        
         }
         @layer base{
             *{
-                @apply m-0 p-0 box-border;
+                @apply m-0 p-0 box-border
             }
             body{
                 font-family: "Overpass";
                 background-color: #F9F9F5;
-            }
-            input{
-                all: unset;
             }
         }
       </style>
@@ -76,43 +53,48 @@
                 </div>
                 <div class="mr-[36px]">
                     <nav>
-                        <a href="./register.html"
+                        <a href="#"
                             class="text-[15px] font-medium bg-[#FFAFAF] px-[28px] pt-[10px] pb-[7px] rounded-[25px] hover:opacity-[0.8] duration-200">Регистрация</a>
+
                     </nav>
                 </div>
             </header>
             <main class="w-full flex flex-col">
-                <div class="w-full max-h-[800px] bg-white mt-[25px] rounded-[25px] flex h-[85vh] lg:h-[82vh]">
-                    <div class="flex max-w-[300px] w-full flex-col items-center dialoglist">
-                        <div class="flex items-center">
-                            <h1 class="text-[20px] font-medium mt-[15px]">Диалоги</h1>
-                            <div
-                                class="w-[100px] h-[20px] bg-green-300 rounded-[5px] mt-[15px] ml-[15px] flex items-center justify-center cursor-pointer">
-                                <span class="text-white text-[15px] font-bold mt-[2px]">найти друга</span>
+                <div class="w-full h-[800px] bg-white mt-[25px] rounded-[25px] flex">
+                    <div class="flex max-w-[300px] w-full flex-col items-center">
+                        <h1 class="text-[20px] font-medium mt-[15px]">Диалоги</h1>
+                        <div
+                            class="h-[50px] w-[250px] rounded-[10px] bg-[#F9F9F5] mt-[15px] flex items-center cursor-pointer hover:bg-[#FFAFAF] duration-300">
+                            <div class="img-circle rounded-[500px] w-[40px] h-[40px] border-[1px] ml-[5px]">
+                                <img src="./media/1663110850_6-mykaleidoscope-ru-p-spokoinii-chelovek-vkontakte-8.jpg"
+                                    alt="Photo" class="w-full h-full rounded-[50px] object-cover">
                             </div>
-                        </div>
-                        <div class="flex mt-[15px] items-center">
-                            <div class="w-[150px] h-[25px] border-[1px] border-green-300 rounded-[5px]">
-                                <form action="#" id="search-form">
-                                    <input type="text" name="loginsearch" id="loginsearch" class="w-full h-full inputLogin"
-                                        placeholder="Введите логин" list="login_all">
-                                    <datalist id="login_all">
-
-                                    </datalist>
+                            <div class="flex flex-col ml-[15px]">
+                                <div class="flex">
+                                    <span>Николай</span>
+                                    <span class="ml-[5px]">Кудрявцев</span>
+                                </div>
+                                <div class="flex">
+                                    <span>Вы:</span>
+                                    <span class="ml-[5px] text-gray-500">Знаешь наверное ...</span>
+                                </div>
                             </div>
-                            <button
-                                class="btn-add w-[20px] h-[20px] bg-green-300 text-white flex justify-center items-center pt-[2px] rounded-[5px] ml-[10px] mb-[2px] cursor-pointer">+</button>
-                            </form>
                         </div>
                     </div>
-                    <div class="h-full w-[1px] bg-gray-200"></div>
-                    <div class="flex flex-col w-full max-w-[850px] messagelist">
+                    <div class="h-full w-[1px] bg-[#F9F9F5]"></div>
+                    <div class="flex flex-col w-full">
+                        <div class="flex h-[70px] w-full items-center ml-[25px]">
+                            <div class="flex">
+                                <span>Николай</span>
+                                <span class="ml-[5px]">Кудрявцев</span>
+                            </div>
+                        </div>
+                        <div class="h-[1px] w-full bg-[#F9F9F5]"></div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
-    <script src="./js/message.js"></script>
 </body>
 
 </html>

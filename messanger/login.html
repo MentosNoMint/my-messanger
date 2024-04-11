@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    '2xl': { 'max': '1535px' },
+                    // => @media (max-width: 1535px) { ... }
+
+                    'xl': { 'max': '1279px' },
+                    // => @media (max-width: 1279px) { ... }
+
+                    'lg': { 'max': '1023px' },
+                    // => @media (max-width: 1023px) { ... }
+
+                    'md': { 'max': '767px' },
+                    // => @media (max-width: 767px) { ... }
+
+                    'sm': { 'max': '639px' },
+                    // => @media (max-width: 639px) { ... }
+                },
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+        }
+        @layer components{
+             .wrapper{
+                @apply min-h-full w-full flex flex-col items-center;
+                     }
+             #active{
+                background-color: #FFAFAF
+             }        
+        }
+        @layer base{
+            *{
+                @apply m-0 p-0 box-border;
+            }
+            body{
+                font-family: "Overpass";
+                background-color: #F9F9F5;
+            }
+            input{
+                all: unset;
+            }
+        }
+      </style>
+    <title>#чатап</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container max-w-[1150px] w-full">
+            <header class="bg-white w-full h-[70px] rounded-[25px] mt-[20px] flex items-center justify-between">
+                <a href="./index.html">
+                    <div class="ml-[36px] flex">
+                        <span class="font-bold text-[36px] cursor-pointer">#</span>
+                        <span class="font-bold text-[36px] cursor-pointer ">чат</span>
+                        <span class="font-bold text-[36px] cursor-pointer text-red-400">ап</span>
+                    </div>
+                </a>
+                <div class="mr-[36px]">
+                    <nav>
+                        <a href="#"
+                            class="text-[15px] font-medium bg-[#FFAFAF] px-[28px] pt-[10px] pb-[7px] rounded-[25px] hover:opacity-[0.8] duration-200">Регистрация</a>
+
+                    </nav>
+                </div>
+            </header>
+            <main class="w-full flex justify-center mt-[125px]">
+                <div
+                    class="max-w-[400px] max-h-[500px]  h-[85vh] bg-white rounded-[20px] w-full flex items-center flex-col">
+                    <h1 class="mt-[25px] font-bold text-[25px]">Авторизация</h1>
+                    <form action="#" class="w-full flex items-center flex-col" id="login-form">
+                        <div class="max-w-[270px] w-full h-[50px] border-[1px] mt-[50px]">
+                            <input type="login" placeholder="Логин" class="w-full h-full pl-[10px]" required name="login" id="login">
+                        </div>
+                        <div class="max-w-[270px] w-full h-[50px] border-[1px] mt-[25px]">
+                            <input type="password" placeholder="пароль" class="w-full h-full pl-[10px]" required name="password" id="password">
+                        </div>
+                        <button
+                            class="max-w-[270px] w-full h-[50px] border-[1px] mt-[25px] flex items-center justify-center bg-[#FFAFAF]">
+                            <span class="font-medium">войти</span>
+                        </button>
+                        <div class="max-w-[200px] w-full h-[1px] bg-gray-300 mt-[25px]"></div>
+                        <a href="./register.html" class="mt-[25px]">Не зарегистрированы?</a>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
+</body>
+
+</html>
